@@ -1,0 +1,10 @@
+.form-control.ng-invalid.ng-touched {
+  border-color: #dc3545; /* Red border if user interacts and input is invalid */
+}
+
+.card {
+  max-width: 500px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
