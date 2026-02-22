@@ -1,0 +1,2 @@
+# angular-cartao-credito-sample-app
+Controle das Movimentações do Cartão de Crédito de uma Família (CRUD Básico) com Angular 21 no Front (CLI  21.1.4  e Node.js 24.11.1) usando Standalone Components e Spring Boot 4.0.2 no Backend (spring-cartao-credito-sample-app).
