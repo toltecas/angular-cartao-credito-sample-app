@@ -13,7 +13,7 @@ export class CartaoCreditoService {
   
   // Membros da Familia
   getMembros(): Observable<MembroFamilia[]> {
-    return this.http.get<MembroFamilia[]>(`${this.API_URL}/membros/v2/1`);
+    return this.http.get<MembroFamilia[]>(`${this.API_URL}/membros`);
   }
   
   criarMembro(membro: MembroFamilia): Observable<MembroFamilia> {
