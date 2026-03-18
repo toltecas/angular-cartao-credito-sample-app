@@ -1,41 +1,43 @@
 <!--<p>cartao-credito-movimentos works!</p>-->
-<div class="card p-4">
-  <h3>Nova Movimentação</h3>
-  
-  <!--<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"> -->
-  <form [formGroup]="transactionForm">
-  
-    <div class="form-group mb-3">
-      <label for="membroId">Membro da Família</label>
-      <select id="membroId" formControlName="membroId" class="form-control">
-        <option value="">Selecione um Membro da Família...</option>
-        <!--<option *ngFor="let mem of membros" [value]="mem.id">{{ mem.nome }}</option>-->
-        
-        @for (parte of membrosFamilia; track parte.id) {
-            <option [value]="parte.id">{{ parte.nome }}</option>
-        }
-
-      </select>
-    </div>
-
-    <div class="form-group mb-3">
-      <label for="valor">Valor (Use '-' para despesas)</label>
-      <input type="number" id="valor" formControlName="valor" class="form-control" placeholder="0.00">
-    </div>
-
-    <div class="form-group mb-3">
-      <label for="data">Data</label>
-      <input type="date" id="data" formControlName="data" class="form-control">
-    </div>
-
-    <div class="form-group mb-3">
-      <label for="descricao">Descrição</label>
-      <input type="text" id="descricao" formControlName="descricao" class="form-control" placeholder="Ex: Supermercado">
-    </div>
-
-    <button type="submit" [disabled]="transactionForm.invalid" class="btn btn-primary">
-      Salvar Registro
-    </button>
+<section class="container">
+  <div class="card p-4">
+    <h3>Nova Movimentação</h3>
     
-  </form>
-</div>
+    <!--<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"> -->
+    <form [formGroup]="transactionForm">
+    
+      <div class="form-group mb-3">
+        <label for="membroId">Membro da Família</label>
+        <select id="membroId" formControlName="membroId" class="form-control">
+          <option value="">Selecione um Membro da Família...</option>
+          <!--<option *ngFor="let mem of membros" [value]="mem.id">{{ mem.nome }}</option>-->
+          
+          @for (parte of membrosFamilia; track parte.id) {
+              <option [value]="parte.id">{{ parte.nome }}</option>
+          }
+
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="valor">Valor (Use '-' para despesas)</label>
+        <input type="number" id="valor" formControlName="valor" class="form-control" placeholder="0.00">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="data">Data</label>
+        <input type="date" id="data" formControlName="data" class="form-control">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" formControlName="descricao" class="form-control" placeholder="Ex: Supermercado">
+      </div>
+
+      <button type="submit" [disabled]="!transactionForm.invalid" class="btn btn-primary">
+        Salvar Movimento
+      </button>
+      
+    </form>
+  </div>
+</section>
