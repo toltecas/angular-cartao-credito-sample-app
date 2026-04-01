@@ -18,10 +18,10 @@ export class CartaoCreditoMovimentos implements OnInit{
       
       //Inicializa o formularios com validacao
       this.transactionForm = this.fb.group({
-        membroId: ['', Validators.required],
-        valor: [null, [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
-        data: [new Date().toISOString().substring(0, 10), Validators.required],
-        descricao: ['', [Validators.required, Validators.minLength(10)]]
+        membroFamiliaSelect: ['', Validators.required],
+        valorDespesaIn: [null, [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
+        dataMovimentoIn: [new Date().toISOString().substring(0, 10), Validators.required],
+        descricaoMovimentoIn: ['', [Validators.required, Validators.minLength(10)]]
       });
       
     }
