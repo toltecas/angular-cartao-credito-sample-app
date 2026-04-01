@@ -1,7 +1,7 @@
 /**
  * Representa os Membros da Familia
  */
-export interface MembroFamilia {
+export interface MembrosFamilia {
   id?: number;         //Opcional gerado via Pattern Generate
   nome: string;
   relacaoFamiliar: string;     //e.x., 'Pai', 'Mae', 'Filho'
@@ -10,9 +10,9 @@ export interface MembroFamilia {
 /**
  * Representam as Movimentacoes (Transacoes)
  */
-export interface MovimentacaoCartao {
+export interface MovimentosCartao {
   id?: number;         ///Opcional gerado via Pattern Generate
-  membroId: number;    //FK link para MembroFamilia
+  codigoMembroFamilia: number;    //FK link para MembroFamilia
   valorMovimento: number;
   dataMovimento: string | Date; // ISO string format (YYYY-MM-DD) from Spring
   descricaoMovimento: string;

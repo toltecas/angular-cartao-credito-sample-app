@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MembroFamilia } from '../../models/cartao-credito.model';
+import { MembrosFamilia } from '../../models/cartao-credito.model';
 import { CartaoCreditoService } from '../../services/cartao-credito-service';
 
 @Component({
@@ -12,7 +12,7 @@ import { CartaoCreditoService } from '../../services/cartao-credito-service';
 export class CartaoCreditoMovimentos implements OnInit{
   
   transactionForm: FormGroup;
-  membrosFamilia: MembroFamilia[] = [];
+  membrosFamilia: MembrosFamilia[] = [];
 
     constructor(private fb: FormBuilder, private servico: CartaoCreditoService){
       
