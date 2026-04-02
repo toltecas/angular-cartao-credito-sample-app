@@ -18,19 +18,32 @@ export class CartaoCreditoMovimentos implements OnInit{
       
       //Inicializa o formularios com validacao
       this.transactionForm = this.fb.group({
-        membroFamiliaSelect: ['', Validators.required],
-        valorDespesaIn: [null, [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
-        dataMovimentoIn: [new Date().toISOString().substring(0, 10), Validators.required],
-        descricaoMovimentoIn: ['', [Validators.required, Validators.minLength(10)]]
+        codigoMembroFamilia: ['', Validators.required],
+        valorMovimento: [null, [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
+        dataMovimento: [new Date().toISOString().substring(0, 10), Validators.required],
+        descricaoMovimento: ['', [Validators.required, Validators.minLength(10)]]
       });
       
     }
 
     ngOnInit(): void {
       //Inicia membros. Pode-se selecionar quem faz a transacao
-      this.servico.getMembros().subscribe(dados => this.membrosFamilia = dados);
+      this.servico.listarMembrosFamilia().subscribe(dados => this.membrosFamilia = dados);
       //console.log(this.membros[0].nome);            
     }
 
+    criarMovimento(): void {
+      console.log('Passando: ', this.transactionForm.value);
+      this.servico.criarMovimentoCartao(this.transactionForm.value).subscribe({
 
+        next: (movimento) => {
+
+          console.log('Successo!', movimento);
+          this.transactionForm.reset({ data: new Date().toISOString().substring(0, 10) });
+        },
+
+        error: (erro) => console.error('Erro ao criar movimentação', erro)
+      });
+
+    }
 }
