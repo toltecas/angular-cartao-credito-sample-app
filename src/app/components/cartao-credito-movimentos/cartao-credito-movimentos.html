@@ -4,11 +4,11 @@
     <h3>Nova Movimentação</h3>
     
     <!--<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"> -->
-    <form [formGroup]="transactionForm" (ngSubmit)="criarMovimento()">
+    <form [formGroup]="movimentosCartaoCredito" (ngSubmit)="criarMovimento()">
     
       <div class="form-group mb-3">
-        <label for="membroId">Membro da Família</label>
-        <select id="membroId" formControlName="codigoMembroFamilia" class="form-control">
+        <label for="codigoMembroFamilia">Membro da Família</label>
+        <select id="codigoMembroFamilia" formControlName="codigoMembroFamilia" class="form-control">
           <option value="">Selecione...</option>
           <!--<option *ngFor="let mem of membros" [value]="mem.id">{{ mem.nome }}</option>-->
           
@@ -26,15 +26,15 @@
 
       <div class="form-group mb-3">
         <label for="data">Data</label>
-        <input type="date" id="dataMovimentoIn" formControlName="dataMovimento" class="form-control">
+        <input type="date" id="dataMovimento" formControlName="dataMovimento" class="form-control">
       </div>
 
       <div class="form-group mb-3">
         <label for="descricao">Descrição</label>
-        <input type="text" id="descricao" formControlName="descricaoMovimento" class="form-control" placeholder="Ex: Supermercado">
+        <input type="text" id="descricaoMovimento" formControlName="descricaoMovimento" class="form-control" placeholder="Ex: Supermercado">
       </div>
 
-      <button type="submit" [disabled]="!transactionForm.invalid" class="btn btn-primary">
+      <button type="submit" [disabled]="!movimentosCartaoCredito.invalid" class="btn btn-primary">
         Salvar Movimento
       </button>
       
