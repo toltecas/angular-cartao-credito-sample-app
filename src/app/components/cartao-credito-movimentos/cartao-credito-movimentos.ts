@@ -11,13 +11,13 @@ import { CartaoCreditoService } from '../../services/cartao-credito-service';
 })
 export class CartaoCreditoMovimentos implements OnInit{
   
-  transactionForm: FormGroup;
+  movimentosCartaoCredito: FormGroup;
   membrosFamilia: MembrosFamilia[] = [];
 
     constructor(private fb: FormBuilder, private servico: CartaoCreditoService){
       
       //Inicializa o formularios com validacao
-      this.transactionForm = this.fb.group({
+      this.movimentosCartaoCredito = this.fb.group({
         codigoMembroFamilia: ['', Validators.required],
         valorMovimento: [null, [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
         dataMovimento: [new Date().toISOString().substring(0, 10), Validators.required],
@@ -33,13 +33,13 @@ export class CartaoCreditoMovimentos implements OnInit{
     }
 
     criarMovimento(): void {
-      console.log('Passando: ', this.transactionForm.value);
-      this.servico.criarMovimentoCartao(this.transactionForm.value).subscribe({
+      console.log('Passando: ', this.movimentosCartaoCredito.value);
+      this.servico.criarMovimentoCartao(this.movimentosCartaoCredito.value).subscribe({
 
         next: (movimento) => {
 
           console.log('Successo!', movimento);
-          this.transactionForm.reset({ data: new Date().toISOString().substring(0, 10) });
+          this.movimentosCartaoCredito.reset({ data: new Date().toISOString().substring(0, 10) });
         },
 
         error: (erro) => console.error('Erro ao criar movimentação', erro)
