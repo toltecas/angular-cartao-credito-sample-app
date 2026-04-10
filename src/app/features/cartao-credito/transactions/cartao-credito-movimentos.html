@@ -4,7 +4,7 @@
     <h3>Nova Movimentação</h3>
     
     <!--<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"> -->
-    <form [formGroup]="movimentosCartaoCredito" (ngSubmit)="criarMovimento()">
+    <form [formGroup]="cartaoCreditoForm" (ngSubmit)="criarMovimento()">
     
       <div class="form-group mb-3">
         <label for="codigoMembroFamilia">Membro da Família</label>
@@ -34,7 +34,7 @@
         <input type="text" id="descricaoMovimento" formControlName="descricaoMovimento" class="form-control" placeholder="Ex: Supermercado">
       </div>
 
-      <button type="submit" [disabled]="!movimentosCartaoCredito.invalid" class="btn btn-primary">
+      <button type="submit" [disabled]="!cartaoCreditoForm.invalid" class="btn btn-primary">
         Salvar Movimento
       </button>
       

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MembrosFamilia } from '../../models/cartao-credito.model';
-import { CartaoCreditoService } from '../../services/cartao-credito-service';
+import { MembrosFamilia } from '../../membros-familia/models/membros-familia.model';
+import { CartaoCreditoService } from '../cartao-credito-service';
 
 @Component({
   selector: 'app-cartao-credito-movimentos',
@@ -11,13 +11,13 @@ import { CartaoCreditoService } from '../../services/cartao-credito-service';
 })
 export class CartaoCreditoMovimentos implements OnInit{
   
-  movimentosCartaoCredito: FormGroup;
+  cartaoCreditoForm: FormGroup;
   membrosFamilia: MembrosFamilia[] = [];
 
     constructor(private fb: FormBuilder, private servico: CartaoCreditoService){
       
       //Inicializa o formularios com validacao
-      this.movimentosCartaoCredito = this.fb.group({
+      this.cartaoCreditoForm = this.fb.group({
         codigoMembroFamilia: ['', Validators.required],
         valorMovimento: [null, [Validators.required, Validators.pattern(/^-?\d+(\.\d{1,2})?$/)]],
         dataMovimento: [new Date().toISOString().substring(0, 10), Validators.required],
@@ -33,13 +33,13 @@ export class CartaoCreditoMovimentos implements OnInit{
     }
 
     criarMovimento(): void {
-      console.log('Passando: ', this.movimentosCartaoCredito.value);
-      this.servico.criarMovimentoCartao(this.movimentosCartaoCredito.value).subscribe({
+      console.log('Passando: ', this.cartaoCreditoForm.value);
+      this.servico.criarMovimentoCartao(this.cartaoCreditoForm.value).subscribe({
 
         next: (movimento) => {
 
           console.log('Successo!', movimento);
-          this.movimentosCartaoCredito.reset({ data: new Date().toISOString().substring(0, 10) });
+          this.cartaoCreditoForm.reset({ data: new Date().toISOString().substring(0, 10) });
         },
 
         error: (erro) => console.error('Erro ao criar movimentação', erro)

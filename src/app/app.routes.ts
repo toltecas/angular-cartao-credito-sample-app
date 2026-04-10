@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { CartaoCreditoMovimentos } from './components/cartao-credito-movimentos/cartao-credito-movimentos';
-import { App } from './app';
+import { CartaoCreditoMovimentos } from './features/cartao-credito/transactions/cartao-credito-movimentos';
 
 export const routes: Routes = [
     { path: 'movimentos', component: CartaoCreditoMovimentos }
